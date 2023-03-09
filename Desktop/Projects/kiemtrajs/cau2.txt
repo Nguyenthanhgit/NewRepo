@@ -1,0 +1,48 @@
+// 2. Most Commonly Used Character in String
+// Prompt
+// Write a function that takes a string, and returns the character that is most commonly used in the string.
+//     Approach
+// What is our Input ?
+//     String = one String
+
+// What is Our Output ?
+//     String = the single character that shows up the most in the given string
+
+// Questions to ask the interviewer:
+// Do we need to consider if there is no string given ?
+//     For this challenge, no
+// Do we need to consider times when more than one character shows up the same number of times ?
+//     No.Return the last one.
+
+// Most Used Char Plan
+// To find the character most often used in a string, we need to be able to count how many of each kind we have.We can do this using an object that has key:value pairs.
+//     Define and Initialize an object
+//     Map character count to that object.
+//     Loop through the object to find the max count.
+//     Assign new max count value to maxCharCount and new max key to maxChar.
+//     Return maxChar
+// Explanation
+//     Create a charCount object.This object can be named whatever you’d like as long as it’s consistent.
+//     Use a standard for loop to iterate through the string, and check to see if it exists in the charCount object.If it does, add 1 to CharCount[key] and reassign it to the same variable.The pipes here will cover any instance where the key does not yet exist in the object and initialize the count to 1.
+//     Loop through the object using a for...in loop.This type of loop allows us to iterate over each property in an object to look at its value.In this instance we want to find the largest number.
+//     The wording for this problem indicates that they want us to find the last max number(in the case there is more than one character with the same amount of appearances), so we use >= to reassign the maxChar if needed.
+//     Return our maxChar.
+
+//Your code here:
+const maxChar = (str) => {
+  const strObj = {};
+  let maxCount = 0;
+  let maxChar = "";
+
+  for (let char of str) {
+    strObj[char] = strObj[char] + 1 || 1;
+  }
+  for (let key in strObj) {
+    if (strObj[key] > maxCount) {
+      maxCount = strObj[key];
+      maxChar = key;
+    }
+  }
+  return maxChar;
+};
+console.log(maxChar("hemanta"));

@@ -1,0 +1,5 @@
+certutil -hashfile .\apache-maven-3.9.0-bin.zip SHA512
+
+notepad apache-maven-3.9.0-bin.zip.sha512
+
+jar xvf .\apache-maven-3.9.0-bin.zip

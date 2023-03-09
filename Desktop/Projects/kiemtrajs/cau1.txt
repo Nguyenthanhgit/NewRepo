@@ -1,0 +1,40 @@
+// //####################################################
+// 1. Longest String in an Array
+// Prompt
+// Write a function that accepts an array of strings.Return the longest string.
+//     Approach
+// What is our Input ?
+//     String[] = an array of strings
+
+// What is our Output ?
+//     String = the longest of the strings in the array
+
+// Questions to ask the interviewer:
+// Do we need to consider if there are no strings in the array ?
+//     For this challenge, no
+// Do we need to consider times when all of the strings are the same length ?
+//     Yes.Return the first string.
+
+// Longest String Plan
+// For this problem, we need to:
+//     Initialize and Declare Variable for Longest String
+//     Loop through the array
+//     Find the length of each string
+//     Determine if that length is the largest we have seen so far.
+//     Replace the longest / largest variable with the arr[index] as long as length is greater than the variable.
+//     Return longest / largest string.
+
+//     Explanation
+// There are two different ways listed here as a possible solution to this problem: one uses the ES5 Syntax and uses the ES6 Syntax.
+//     In both solutions, we initially need to declare a longest variable and initialize it to an empty string.
+//     In the ES5 solution, we are utilizing a traditional for loop structure to look at each index in the array.We are using the array method forEach to iterate over the array in the ES6 solution.
+//     As we iterate through the data structure, we want to take a look at the length of each string.In JavaScript, we can do that with the length property.
+//     In the ES5 solution, we utilized a conditional statement to see if the current(arr[i]) string’s length is longer than(but not equal to) the current longest string(longest).The ES6 solution takes another approach with using the Math object property max as a shortcut for the conditional logic in the ES5 version.
+//     If the string is longer, we assign it to the longest variable we already created.
+//     Return the longest as our function’s terminal statement in both cases.
+
+//Your code here:
+
+var longest = arr.reduce(function (a, b) {
+  return a.length > b.length ? a : b;
+});

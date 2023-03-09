@@ -1,0 +1,64 @@
+// 6. Armstrong Numbers
+// Prompt
+// An Armstrong number is an n - digit number that is equal to the sum of the nthnthnth powers of its digits.Determine if the input number is an Armstrong number.Return either true or false.
+//     Approach
+// What is our Input ?
+//     Number = n - digit number
+
+// What is our Output ?
+//     Boolean means either true or false.true if number is Armstrong Number; false if it is not.
+
+// Questions to ask the interviewer:
+// May I have an example please ?
+//     13 + 53 + 33=1531 ^ 3 + 5 ^ 3 + 3 ^ 3 = 1531​3 + 5​3 + 3​3 = 153
+
+// Armstrong Number Plan
+// Remember that in JavaScript type coercion exists.When working with Numbers is JS, remember to check the typeof the number.If it is a string, you’ll need to plan for that.This is really important when working with math in JS.
+//     Explanation
+// To solve this problem, we change the number to a string, figure out the power by getting the length of the number, and then use a for loop to add up the individual numbers ^ length of the number passed in.
+// We then check to see if the sum is equal to the original number.If it is, it is an Armstrong number.
+
+//Your code here:
+
+function power(x, y) {
+  if (y == 0) return 1;
+  if (y % 2 == 0)
+    return power(x, parseInt(y / 2, 10)) * power(x, parseInt(y / 2, 10));
+
+  return x * power(x, parseInt(y / 2, 10)) * power(x, parseInt(y / 2, 10));
+}
+
+function order(x) {
+  let n = 0;
+  while (x != 0) {
+    n++;
+    x = parseInt(x / 10, 10);
+  }
+  return n;
+}
+
+function isArmstrong(x) {
+  let n = order(x);
+  let temp = x,
+    sum = 0;
+  while (temp != 0) {
+    let r = temp % 10;
+    sum = sum + power(r, n);
+    temp = parseInt(temp / 10, 10);
+  }
+
+  return sum == x;
+}
+
+let x = 153;
+if (isArmstrong(x)) {
+  document.write("True" + "</br>");
+} else {
+  document.write("False" + "</br>");
+}
+x = 1253;
+if (isArmstrong(x)) {
+  document.write("True");
+} else {
+  document.write("False");
+}

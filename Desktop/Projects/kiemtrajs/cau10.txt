@@ -1,0 +1,61 @@
+// 10. Circular Linked List
+// Prompt
+// Given a linked list, return true if the list is circular, false if it is not.
+//     Approach
+// What is our Input ?
+//     A new LinkedList()
+
+// What is our Output ?
+//     A Boolean that tells us if the linked list is circular or not.
+// Questions to Possibly Ask Interviewer
+// What does it mean for a linked list to be circular ?
+//     It means that a next node value could point to a node that we have already seen in our linked list.
+
+// Reverse a Linked List Plan
+// We will have two pointers: one slow and one fast.The fast one will move twice as much as the slow one on each iteration.If it comes to be that the fast.next.next value doesn’t exist, we can assume it’s a linear linked list.If the slow pointer and the fast pointer ultimately end up equal, we know we have a circular component to our list.
+//     Explanation
+// Here we declare and initialize two pointers, one slow and one fast, that are both pointed at the head.While the next two nodes exist, we’ll reassign the pointers: the slow will move to the next node and the fast will move two nodes.
+// If the slow ever is the same value as the fast, we have a circular linked list.If ever one of the two nodes past the current node doesn’t exist, we’ll break the loop and return false.
+
+//Your code here:
+class Node {
+    constructor(val) {
+        this.data = val;
+        this.next = null;
+    }
+}
+   function isCircular( head) {
+        
+        if (head == null)
+            return true;
+  
+       
+         node = head.next;
+  
+        while (node != null && node != head)
+            node = node.next;
+  
+       
+        return (node == head);
+    }
+  
+    
+    function newNode(data) {
+         temp = new Node();
+        temp.data = data;
+        temp.next = null;
+        return temp;
+    }
+  
+    
+         head = newNode(1);
+        head.next = newNode(2);
+        head.next.next = newNode(3);
+        head.next.next.next = newNode(4);
+  
+        document.write(isCircular(head) ? "Yes<br/>" : "No<br/>");
+  
+        
+        head.next.next.next.next = head;
+  
+        document.write(isCircular(head) ? "Yes<br/>" : "No<br/>");

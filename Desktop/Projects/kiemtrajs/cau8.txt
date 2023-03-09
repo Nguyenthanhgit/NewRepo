@@ -1,0 +1,91 @@
+// 8. Reverse a Linked List
+// Prompt
+// Create a Node class and a LinkedList class with these methods:
+// insertFirst(data)
+// insertLast(data)
+// getFirst()
+// getLast()
+
+// Approach
+// What is our Input ?
+//     Nothing.We are building two classes from scratch that have methods.
+
+// What is our Output ?
+//     This is a class that will create instances of a LinkedList.We will use it to test the reverse a linked list functionality.
+
+// Questions to Possibly Ask Interviewer
+// Are we to assume this is a singly - linked list that actually exists ?
+//     No.Handle all possible errors if you can.
+
+// Reverse a Linked List Plan
+// The first thing we need to investigate is how a linked list works.Once we have that figured out, it might be a lot easier to write out the code for it.
+// Linked lists are different from arrays in that they don’t require a continuous place of residence in memory.Linked Lists can be broken up into single nodes if needed as long as the linked list’s next value is not null.
+//     Let’s plan to initialize three variables: prev as NULL, curr as head, and next as NULL.Iterate trough the Linked List.In a while loop, do the following.
+//     Store next node
+// next = curr.next
+//     Change next of current(this is where the reversing happens)
+// curr.next = prev
+// Explanation
+// We start with the Node class. It will have a data property and a next property.The next property acts as a pointer that will direct us to the next node in our linked list if it exists, or null.
+// For the Linked List class, we check for failures in our methods before we handle the success.With Linked Lists, we will check to see if the actual list exists by checking to see if the head exists and perform the appropriate logic for each method.
+// When we reverse a linked list, juggling variables around is the rule of the day.We have one variable, node, that is declared and then initialized to head.We declare tmp and prev without initializing them.
+// While the node exists, we redirect the pointers by reassigning variables.The result is a reversed linked list.
+
+//Your code here:
+const list = new LinkedList();
+list.insertFirst(‘a’)
+list.insertFirst(‘b’)
+list.getLast();
+class Node {
+    constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+    }
+   }
+   class LinkedList {
+    constructor() {
+     this.head = null;
+    }
+    insertFirst(data) {
+     const node = new Node(data, this.head);
+     this.head = node;
+    }
+    size() {
+     let counter = 0;
+     let node = this.head;
+     while (node) {
+      counter++;
+      node = node.next;
+     }
+     return counter;
+    }
+    getFirst() {
+     return this.head.data;
+    } 
+    
+    getLast() {
+     if (!this.head) {
+     return null;
+     }
+     let node = this.head;
+     while (node) {
+      if (!node.next) {
+       return node;
+      }
+     node = node.next; 
+    }
+   }
+   clear(){
+    this.head = null;
+   }
+   }
+   const list = new LinkedList();
+//Added two elements
+list.insertFirst("a");
+list.insertFirst("b");
+console.log("Size of the list after adding two elements " + list.size());
+//Clear the list
+console.log("");
+list.clear();
+console.log("After clearing the list " + list.size());
+console.log("");

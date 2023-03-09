@@ -1,0 +1,104 @@
+// 9. Remove Kth - Node from Linked List
+// Prompt
+// Using the Node and LinkedList classes that you created in the previous question, add methods to it so that, when given an kth - integer, you can delete that kthkthkth node from the linked list
+// Approach
+// What is our Input ?
+//     We will add to the Linked List and Node classes that were written in the previous question.
+
+// What is our Output ?
+//     This is a class that will create instances of a LinkedList.We will use it to test delete a kthkthkth - node functionality.
+
+// Questions to Possibly Ask Interviewer
+// Is this a zero - based indexing ?
+//     Yes.
+
+// LinkedList Delete K - th Node Plan
+// When given K we have to be able to delete that node in a linked list.To handle edge cases, we need to have some knowledge of the size of the list, the node prior to the Kth node and the node after the Kth node.We essentially need to redirect the pointers for those nodes to not include the one we want to be deleted.
+// To do that, we’ll loop through the list, keep track of which node we’re on, and change the pointers to skip the Kth - node.It’ll still be in memory, ready to be written over, but it will be essentially deleted from our list.
+
+//Your code here:
+class Node {
+    constructor() {
+        this.data = 0;
+        this.next = null;
+    }
+}
+  
+  
+    function freeList( node) {
+        while (node != null) {
+             next = node.next;
+            node = next;
+        }
+        return node;
+    }
+  
+    
+    function deleteKthNode( head , k) {
+     
+        if (head == null)
+            return null;
+  
+        if (k == 1) {
+            head = freeList(head);
+            return null;
+        }
+  
+       
+        var ptr = head, prev = null;
+  
+       
+        var count = 0;
+        while (ptr != null) {
+          
+            count++;
+  
+            if (k == count) {
+                
+                prev.next = ptr.next;
+  
+               
+                count = 0;
+            }
+  
+            
+            if (count != 0)
+                prev = ptr;
+  
+            ptr = prev.next;
+        }
+        return head;
+    }
+  
+    
+    function displayList( head) {
+         temp = head;
+        while (temp != null) {
+            document.write(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+  
+    
+    function newNode(x) {
+         temp = new Node();
+        temp.data = x;
+        temp.next = null;
+        return temp;
+    }
+  
+   
+         head = newNode(1);
+        head.next = newNode(2);
+        head.next.next = newNode(3);
+        head.next.next.next = newNode(4);
+        head.next.next.next.next = newNode(5);
+        head.next.next.next.next.next = newNode(6);
+        head.next.next.next.next.next.next = newNode(7);
+        head.next.next.next.next.next.next.next = newNode(8);
+  
+        var k = 3;
+        head = deleteKthNode(head, k);
+  
+        displayList(head);
+  

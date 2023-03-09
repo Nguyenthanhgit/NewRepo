@@ -1,0 +1,42 @@
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=1234 -d -p 3306:3306 mysql
+
+host: localhost | 127.0.0.1
+username: root
+password 1234
+Port: 3306
+
+adminer: docker run --link some-mysql:db -p 8888:8080 adminer
+
+fix loi powershell: npm install -g yarn / yarn -v 
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+npm i => yarn add
+npm uninstall => yarn remove
+
+https://gitlab.com/quangsi/bc35_movie
+
+yarn add multer
+yarn add bcrypt
+
+
+Buổi 1: x
+Buổi 2: sql - ngày xóa 07/03 _v
+Buoi 3: sql relationship, adminer - ngày xóa 07/03 _v
+Buoi 4: express js - ngày xóa 07/03 _v
+Buoi 5: sequelize - ngày xóa 07/03 _v
+Buoi 6: sequelize auto - ngày xóa 10/03 - ngày xem 3/3
+Buoi 7: upload - ngày xóa 14/03
+Buoi 8: jwt - ngày xóa 14/03
+Buoi 9: prisma - ngày xóa 21/03
+Buoi 10: graphql, socketio - ngày xóa 24/03
+Buoi 11: Docker - ngày xóa 28/03
+Buoi 12: vps - ngày xóa 30/03
+
+Coi lại lần 2: 
+
+
+Buổi 2: sql - 12h30 T7, 04/03 trong sáng 45p tối 45p
+Buoi 3: sql realtionship, adminer - Chiều & tối CN
+Buổi 4: express js t2, 06/03 sáng chiều
+Buổi 5: sequlize - 07/03 sáng tối
+
+

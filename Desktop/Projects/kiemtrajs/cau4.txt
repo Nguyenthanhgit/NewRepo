@@ -1,0 +1,46 @@
+// 4. String Permutation is Palindrome ?
+//     Prompt
+// Given a string, write a function that will return whether or not that string is a palindrome.
+//     Approach
+// What is our Input ?
+//     String = one String
+
+// What is our Output ?
+//     Boolean means either true or false.true if string is a palindrome; false if it is not.
+
+// Questions to ask the interviewer:
+// Do we need to consider whitespace ?
+//     Do not trim whitespace.
+// Does the palindrome need to be in the dictionary ?
+//     No, it does not.
+
+// Palindromes Plan
+//     Reverse the string.We need to keep the old reference to the string to use later.To do this, we need to split string into an array.
+//     Reverse the string.
+//     Join the string.
+//     See if new variation of string is equal to an old variation of string.
+//     Explanation
+// This one is deceptively simple.You just need to have knowledge of array methods and how to work with strings in conjunction with those methods.Practice how this could possibly be done without the methods so you know how these methods work under the hood.
+// Keep the learning going.
+// Learn JavaScript without scrubbing through videos or documentation.Educative’s text - based courses are easy to skim and feature live coding environments, making learning quick and efficient.
+
+//Your code here:
+
+let NO_OF_CHARS = 256;
+function canFormPalindrome(str) {
+  let count = Array(NO_OF_CHARS).fill(0);
+  for (let i = 0; i < str.lenght; i++) count[str[i].charCodeAt()]++;
+
+  let odd = 0;
+  for (let i = 0; i < NO_OF_CHARS; i++) {
+    if ((count[i] & 1) == 1) odd++;
+
+    if (odd > 1) return false;
+  }
+  return true;
+}
+if (canFormPalindrome("geeksforgeeks")) document.write("Yes");
+else document.write("No");
+
+if (canFormPalindrome("geeksogeeks")) document.write("Yes");
+else document.write("No");

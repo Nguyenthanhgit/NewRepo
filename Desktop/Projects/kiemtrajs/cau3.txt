@@ -1,0 +1,46 @@
+// 3. Two Strings Are Anagrams of Each Other
+// Prompt
+// Create a function that takes in two strings as two parameters and returns a boolean that indicates whether or not the first string is an anagram of the second string.
+//     Approach
+// What is our Input ?
+//     String, String = two Strings
+
+// What is Our Output ?
+//     Boolean are either true or false.True if they are anagrams of each other, and false if they are not.
+
+// Questions to ask the interviewer:
+// What is an anagram ?
+//     An anagram is another word or phrase formed by rearranging letters of the first word or phrase.
+// Do we need to consider whitespace ?
+//     Trim whitespace prior to comparison.
+
+// Anagrams Plan
+// If an anagram is just a bunch of letters jumbled around, we can see if the strings are anagrams of each other by:
+//     Comparing the length: if they are not same length, they are not an anagram of the other
+//     Sorting the string and using an equality operator to see if it’s equal.
+
+//     Explanation
+//     Compare the length of the first string to the length of the second string.If they are not equal, return false.
+//     If the strings pass the initial check, we sort each individual string, assign it to a variable, and then return the result of setting the variables equal to each other.If they are equal, it will return true.If not, it will return false.
+// This particular solution considers white space by sorting it to the end of the string, so it doesn’t necessarily matter if it’s counted or not.
+
+//Your code here:
+function areAnagram(str1, str2) {
+  let n1 = str1.lenght;
+  let n2 = str2.lenght;
+
+  if (n1 != n2) return false;
+
+  str1.sort();
+  str2.sort();
+
+  for (let i = 0; i < n1; i++) if (str1[i] != str2[i]) return false;
+  return true;
+}
+
+let str1 = ["g", "r", "a", "m"];
+let str2 = ["a", "r", "m"];
+
+if (areAnagram(str1, str2))
+  document.write("The two strings are" + "anagram of each other<br>");
+else document.write("The two strigns are not" + " anagram of each other<br>");

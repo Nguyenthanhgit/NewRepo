@@ -1,0 +1,67 @@
+// 5. The Complete Guide to Modern JavaScript
+// Balanced Brackets
+// Prompt
+// Given a string possibly containing three types of braces({}, [], ()), write a function that returns a Boolean indicating whether the given string contains a valid nesting of braces.
+//     Approach
+// What is our Input ?
+//     String = one String
+
+// What is our Output ?
+//     Boolean means either true or false.true if string has balanced brackets; false if it does not.
+
+// Questions to ask the interviewer:
+// What do you mean by balanced brackets ?
+//     A string is considered balanced if it has as many opening brackets of a given type as it has closing brackets of that same type.No bracket can be left unmatched.A closing bracket also cannot match a corresponding opening bracket that comes after it.Brackets also cannot overlap each other.
+// Will the string only have brackets in it ?
+//     No.All chars can be used.
+
+// Balanced Brackets Plan
+// Because we are looking for nested balanced brackets, we are looking to use a data structure to store the open brackets we have seen so far.
+// As we come to a closing bracket, we need to look to see if the last bracket added to the data structure matches the opposite of the current bracket.
+// If your data structure is empty by the time we get to the end of the string, we have balanced brackets.
+
+//     Explanation
+// The process for this particular problem is more about checking for failures.We use a data structure called a stack that takes a first in, last out approach to do that.
+// When we come across an open bracket, we push it on to the stack.When we come across a closed one, we check to see if the last index of the stack is the opposite the current character.
+// If the stack is empty by the time we get to the end of our logic, we have balanced brackets.
+
+//Your code here:
+function areBracketsBalanced(expr) {
+  let stack = [];
+
+  for (let i = 0; i < expr.length; i++) {
+    let x = expr[i];
+
+    if (x == "(" || x == "[" || x == "{") {
+      stack.push(x);
+      continue;
+    }
+
+    if (stack.length == 0) return false;
+
+    let check;
+    switch (x) {
+      case ")":
+        check = stack.pop();
+        if (check == "{" || check == "[") return false;
+        break;
+
+      case "}":
+        check = stack.pop();
+        if (check == "(" || check == "[") return false;
+        break;
+
+      case "]":
+        check = stack.pop();
+        if (check == "(" || check == "{") return false;
+        break;
+    }
+  }
+
+  return stack.length == 0;
+}
+
+let expr = "([{}])";
+
+if (areBracketsBalanced(expr)) document.write("Balanced ");
+else document.write("Not Balanced ");
